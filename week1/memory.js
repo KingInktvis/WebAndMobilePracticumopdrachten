@@ -10,7 +10,10 @@ function initGame() {
     speelveld = document.getElementById("speelveld");
     buildBoard();
     makeTop5();
-    newGame();
+    var b = document.getElementById("opnieuw");
+    b.addEventListener("click", function () {
+        newGame();
+    })
 }
 
 function buildBoard(){
@@ -63,7 +66,7 @@ function cardListener(card){
             stopMoveTimer();
             found++;
             $("#gevonden").text(found);
-            if (found === 2){
+            if (found === 1){
                 gameEnd();
             }
         }else {
@@ -77,23 +80,39 @@ function cardListener(card){
 }
 
 function gameEnd() {
-    clearInterval(matchTime);
+    clearInterval(matchTimer);
     var user = prompt("Please enter your name");
     if (user !== null){
+        var item = [user, matchTime];
         if (top5.length < 5){
-            var item = [user, matchTime];
             top5.push(item);
+        }else {
+            var canEnter = false;
+            for (i = 0; i < 5; i++){
+                if (top5[i][1] > matchTime){
+                    canEnter = true;
+                    break;
+                }
+            }
+            if (canEnter){
+                top5[4] = item;
+            }
         }
     }
+    matchStarted = false;
     sortTop();
     updateTop5Display();
 }
 
 function newGame(){
     if (matchStarted === false){
+        found = 0;
+        $("#gevonden").text(found);
         while (speelveld.lastChild){
             speelveld.removeChild(speelveld.lastChild);
         }
+        $("#tijd").text(timeString(0));
+        buildBoard();
     }
 }
 
@@ -136,8 +155,10 @@ var matchTime = 0;
 var matchTimer;
 var moveTime;
 var moveTimer;
+
 function startMatchTimer(){
     matchStarted = true;
+    matchTime = 0;
     matchTimer = setInterval(function () {
         matchTime++;
         $("#tijd").text(timeString(matchTime));
