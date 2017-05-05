@@ -27,7 +27,7 @@ function initGame() {
         td.appendChild(cards[i]);
     }
     speelveld.appendChild(td);
-    startMatchTimer();
+    // startMatchTimer();
 }
 
 function makeCard(char) {
@@ -102,7 +102,7 @@ function makeTop5() {
 
 function updateTop5Display() {
     for (i = 0; i < top5.length; i++){
-        top5Display[i].innerHTML = top5[i][0];
+        top5Display[i].innerHTML = top5[i][0] + " - " + timeString(top5[i][1]);
     }
 }
 
