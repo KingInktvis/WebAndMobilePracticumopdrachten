@@ -8,7 +8,12 @@ var top5Display;
 
 function initGame() {
     speelveld = document.getElementById("speelveld");
+    buildBoard();
     makeTop5();
+    newGame();
+}
+
+function buildBoard(){
     cards = [];
     var characters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R",
         "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R"];
@@ -27,7 +32,6 @@ function initGame() {
         td.appendChild(cards[i]);
     }
     speelveld.appendChild(td);
-    // startMatchTimer();
 }
 
 function makeCard(char) {
@@ -83,6 +87,14 @@ function gameEnd() {
     }
     sortTop();
     updateTop5Display();
+}
+
+function newGame(){
+    if (matchStarted === false){
+        while (speelveld.lastChild){
+            speelveld.removeChild(speelveld.lastChild);
+        }
+    }
 }
 
 function makeTop5() {
