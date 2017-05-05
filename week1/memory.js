@@ -5,9 +5,11 @@ var openCards = [null, null];
 var found = 0;
 var top5 = [];
 var top5Display;
+var matchOver;
 
 function initGame() {
     speelveld = document.getElementById("speelveld");
+    matchOver = false;
     buildBoard();
     makeTop5();
     var b = document.getElementById("opnieuw");
@@ -52,7 +54,7 @@ function makeCard(char) {
 function cardListener(card){
     var current = card.className;
 
-    if (current === "found" || openCards[1] !== null) return;
+    if (current === "found" || openCards[1] !== null || matchOver === true) return;
     if (matchStarted === false) startMatchTimer();
 
     if (current === "inactive" ){
@@ -81,6 +83,7 @@ function cardListener(card){
 
 function gameEnd() {
     clearInterval(matchTimer);
+    matchOver = true;
     var user = prompt("Please enter your name");
     if (user !== null){
         var item = [user, matchTime];
@@ -106,6 +109,7 @@ function gameEnd() {
 
 function newGame(){
     if (matchStarted === false){
+        matchOver = false;
         found = 0;
         $("#gevonden").text(found);
         while (speelveld.lastChild){
