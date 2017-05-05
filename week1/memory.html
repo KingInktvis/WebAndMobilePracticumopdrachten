@@ -25,7 +25,7 @@
   @media only screen and (orientation:portrait) {
     table#speelveld { width:70vw; height:70vw; border-spacing:1vw;}
   }
-	td.inactive { background-color:red; color:rgba(255,255,255,1); -webkit-touch-callout: none;
+	td.inactive { background-color:red; color:rgba(255,255,255,0); -webkit-touch-callout: none;
         /*http://stackoverflow.com/a/2310809*/
         -webkit-user-select: none;
         -khtml-user-select: none;
@@ -90,30 +90,18 @@
     </td></tr>
     <tr><td>
 	    <button onclick="changeColorInactive()">
-                <!--class="jscolor-->
-	    	<!--{valueElement:'valueinactive', -->
-	    	 <!--styleElement:'styleInactive', -->
-	    	 <!--onFineChange:'setColor(\'td.inactive\')'}">-->
 
 	    Kaartkleur
 		</button>
 		<input type="hidden" id="valueinactive" value="ff0000"><input id="styleInactive">
   	<br>
 	    <button onclick="changeColorActive()">
-                <!--class="jscolor-->
-	    	<!--{valueElement:'valueactive', -->
-	    	 <!--styleElement:'styleActive', -->
-	    	 <!--onFineChange:'setColor(\'td.active\')'}">-->
 
 	    Open 
 		</button>
 		<input type="hidden" id="valueactive" value="008C00"><input id="styleActive">
   	<br>
 	    <button onclick="changeColorFound()">
-                <!--class="jscolor-->
-	    	<!--{valueElement:'valuefound',-->
-	    	 <!--styleElement:'styleFound',-->
-	    	 <!--onFineChange:'setColor(\'td.found\')'}">-->
 	    Gevonden 
 		</button>
 		<input type="hidden" id="valuefound" value="800080"><input id="styleFound">
@@ -127,44 +115,5 @@
  
 </div>
 </div>
-
-<script>
-//    var veld = $("#speelveld");
-//    function makeCard(char) {
-//        var element = document.createElement("TH");
-//        var node = document.createTextNode(char);
-//        element.appendChild(node);
-////        veld.appendChild(element);
-//
-////        element.value = char;
-//        return element;
-//    }
-//    var cards = [];
-//    var field = {cards: []};
-//
-//
-//    function initGame() {
-//        field = {cards: []};
-//        var characters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R",
-//            "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R"];
-//        for (i=35;i>=0;i--){
-//            var rand = Math.floor((Math.random() * i) + 1);
-//            var element = makeCard(characters.splice(rand), 1);
-//            cards.push(element);
-//        }
-//
-//        var h = document.createElement("td");
-//        veld.appendChild(h);
-//        for (i=0;i<36;i++) {
-//            h.appendChild(cards[0]);
-//        }
-//
-//    }
-
-//    for (i=35;i>=0;i--){
-    
-
-</script>
-
 </body>
 </html>

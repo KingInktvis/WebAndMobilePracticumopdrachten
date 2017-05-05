@@ -28,7 +28,6 @@ function buildBoard(){
         cards.push(element);
     }
     var td = document.createElement("tr");
-    var node = document.createTextNode("");
     for(i=0;i<36;i++){
         if (i % 6 === 0 && i !== 0){
             speelveld.appendChild(td);
@@ -68,7 +67,7 @@ function cardListener(card){
             stopMoveTimer();
             found++;
             $("#gevonden").text(found);
-            if (found === 1){
+            if (found === 18){
                 gameEnd();
             }
         }else {
@@ -130,9 +129,6 @@ function makeTop5() {
         ol.appendChild(li);
         top5Display.push(li);
     }
-
-
-
 }
 
 function updateTop5Display() {
@@ -215,8 +211,6 @@ function getStyleRule(name) {
     }
     return null;
 }
-
-// $("#styleInactive").addEventListener("change")
 
 function changeColorInactive() {
     getStyleRule("td.inactive").backgroundColor = $("#valueinactive").value;
