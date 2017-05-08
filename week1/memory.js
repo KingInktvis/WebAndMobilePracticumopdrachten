@@ -53,7 +53,7 @@ function makeCard(char) {
 function cardListener(card){
     var current = card.className;
 
-    if (current === "found" || openCards[1] !== null || matchOver === true) return;
+    if (current === "found" || openCards[1] !== null || matchOver === true || current === "active") return;
     if (matchStarted === false) startMatchTimer();
 
     if (current === "inactive" ){
