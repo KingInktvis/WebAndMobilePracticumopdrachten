@@ -218,12 +218,13 @@ function getStyleRule(name) {
     return null;
 }
 
-function changeColorInactive() {
-    getStyleRule("td.inactive").backgroundColor = $("#valueinactive").value;
-}
-function changeColorActive() {
-    getStyleRule("td.inactive").backgroundColor = $("#valueactive").text;
-}
-function changeColorFound() {
-    getStyleRule("td.inactive").backgroundColor = $("#valuefound").text;
+function setColor(item) {
+    if (item === "td.inactive"){
+        getStyleRule(item).backgroundColor = "#" + document.getElementById("valueinactive").value;
+        console.log("hlep")
+    }else if (item === "td.active"){
+        getStyleRule(item).backgroundColor = "#" + document.getElementById("valueactive").value;
+    }else if (item === "td.found"){
+        getStyleRule(item).backgroundColor = "#" + document.getElementById("valuefound").value;
+    }
 }
