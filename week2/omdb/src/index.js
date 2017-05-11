@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+import SearchBar from './searchbar'
+
 ReactDOM.render(
-  <input />,
-  document.getElementById('root')
+    <SearchBar movie="batman" />,
+    document.getElementById('root')
 );
