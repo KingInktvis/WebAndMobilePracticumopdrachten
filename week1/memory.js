@@ -110,6 +110,7 @@ function gameEnd() {
     matchStarted = false;
     sortTop();
     updateTop5Display();
+    calculateAverageTime();
 }
 
 function newGame(){
@@ -161,6 +162,7 @@ var matchTime = 0;
 var matchTimer;
 var moveTime;
 var moveTimer;
+var average = 0;
 
 function startMatchTimer(){
     matchStarted = true;
@@ -168,6 +170,7 @@ function startMatchTimer(){
     matchTimer = setInterval(function () {
         matchTime++;
         $("#tijd").text(timeString(matchTime));
+        averageTime();
     }, 1000);
 }
 
@@ -196,6 +199,20 @@ function moveInterval(){
         }
         stopMoveTimer();
     }
+}
+
+function averageTime(){
+    var difference = matchTime - average;
+    var between = difference >= 0 ? "+" : "";
+    document.getElementById("gemiddeld").innerHTML = timeString(average) + " (" + between + timeString(difference) + ")";
+}
+
+function calculateAverageTime(){
+    var total = 0;
+    for (i = 0; i < top5.length; i++){
+        total += top5[i][1];
+    }
+    average = Math.floor(total / top5.length);
 }
 
 function timeString(seconds){
