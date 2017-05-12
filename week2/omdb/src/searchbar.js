@@ -12,7 +12,7 @@ class SearchBar extends React.Component {
         return (
             <input value={this.props.movie}
             onChange={(item) => {
-
+                this.props.movie = item.value;
             }}/>
         );
     }
